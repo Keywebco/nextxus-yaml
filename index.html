@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#0a0a0a"/>
+<title>NextXus YAML Data Hub — Federation Schemas</title>
+<meta name="description" content="Federation data schemas explained: the &#x27;everything is the same&#x27; uniform schema and the 13-topic taxonomy v1.1 as a readable table."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://keywebco.github.io/nextxus-yaml/"/>
+<meta property="og:title" content="NextXus YAML Data Hub — Federation Schemas"/>
+<meta property="og:description" content="Federation data schemas explained: the &#x27;everything is the same&#x27; uniform schema and the 13-topic taxonomy v1.1 as a readable table."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://keywebco.github.io/nextxus-yaml/"/>
+<style>
+:root{--bg:#0a0a0a;--panel:#111614;--line:rgba(0,255,136,.22);--text:#e0e0e0;--dim:#a8b3ad;--green:#00ff88;--cyan:#00d4ff}
+*{box-sizing:border-box}
+html{font-size:112.5%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.65;
+background-image:radial-gradient(circle at 15% 0%,rgba(0,255,136,.07),transparent 45%),radial-gradient(circle at 85% 100%,rgba(0,212,255,.07),transparent 45%);background-attachment:fixed}
+a{color:var(--cyan)}
+a:hover,a:focus{color:var(--green)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;background:var(--green);color:#000;padding:8px 14px;z-index:2000}
+.nx-universal-nav{background:#000;border-bottom:2px solid var(--green);position:sticky;top:0;z-index:1000;width:100%;box-shadow:0 0 18px rgba(0,255,136,.18)}
+.nx-nav-inner{display:flex;align-items:center;gap:10px;padding:10px 20px;flex-wrap:wrap;max-width:1200px;margin:0 auto}
+.nx-nav-brand{color:var(--green);font-family:'Courier New',monospace;font-size:1rem;font-weight:700;letter-spacing:.15em;text-decoration:none;white-space:nowrap}
+.nx-nav-brand:hover{color:#fff}
+.nx-nav-links{display:flex;flex-wrap:wrap;gap:6px;flex:1;justify-content:center}
+.nx-nav-links a,.nx-nav-contact{color:rgba(0,255,136,.85);font-family:'Courier New',monospace;font-size:.8rem;letter-spacing:.05em;text-decoration:none;padding:4px 10px;border:1px solid var(--line);border-radius:3px;transition:all .2s;white-space:nowrap}
+.nx-nav-links a:hover,.nx-nav-links a:focus,.nx-nav-contact:hover,.nx-nav-contact:focus{color:#000;background:var(--green);border-color:var(--green)}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 40px}
+.hero{padding:36px 0 22px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.eyebrow{font-family:'Courier New',monospace;color:var(--cyan);letter-spacing:.2em;text-transform:uppercase;font-size:.85rem;margin:0 0 8px}
+h1{font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.15;margin:0 0 14px;color:#fff;animation:glow 4s ease-in-out infinite}
+h2{font-size:1.6rem;color:var(--green);margin:40px 0 12px;border-left:4px solid var(--cyan);padding-left:12px}
+h3{font-size:1.2rem;color:#fff;margin:0 0 6px}
+.lead{font-size:1.2rem;color:var(--text);max-width:820px}
+p{max-width:860px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;padding:0;list-style:none}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);border-color:var(--green);box-shadow:0 0 22px rgba(0,255,136,.15)}
+.card p{margin:6px 0 0;color:var(--dim)}
+.card a.go{display:inline-block;margin-top:10px;font-weight:600}
+.meta{font-family:'Courier New',monospace;color:var(--cyan);font-size:.85rem}
+.tag{display:inline-block;font-family:'Courier New',monospace;font-size:.75rem;padding:2px 8px;border:1px solid var(--cyan);color:var(--cyan);border-radius:999px;margin-right:6px}
+.tag.done{border-color:var(--green);color:var(--green)}
+table{width:100%;border-collapse:collapse;margin:12px 0;background:var(--panel)}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+th{background:#0d1f17;color:var(--green);font-family:'Courier New',monospace}
+code,pre{font-family:'Courier New',monospace;color:#c8ffe6}
+pre{background:#050806;border:1px solid var(--line);border-radius:8px;padding:16px;overflow-x:auto;font-size:.85rem}
+.cta{margin:36px 0;padding:24px;border:2px solid var(--green);border-radius:12px;background:linear-gradient(135deg,rgba(0,255,136,.08),rgba(0,212,255,.06));animation:pulse 5s ease-in-out infinite}
+.btn{display:inline-block;background:var(--green);color:#000;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:6px;margin:8px 10px 0 0}
+.btn:hover,.btn:focus{background:var(--cyan);color:#000}
+.btn.alt{background:transparent;color:var(--cyan);border:1px solid var(--cyan)}
+ol.steps li,ul.list li{margin:8px 0}
+blockquote{border-left:4px solid var(--green);margin:16px 0;padding:8px 16px;color:#fff;font-size:1.15rem;background:var(--panel)}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:24px 20px;background:#000}
+footer .inner{max-width:1100px;margin:0 auto}
+footer ul{display:flex;flex-wrap:wrap;gap:8px 16px;list-style:none;padding:0;margin:10px 0}
+footer small{color:var(--dim)}
+@keyframes glow{0%,100%{text-shadow:0 0 8px rgba(0,255,136,.35)}50%{text-shadow:0 0 22px rgba(0,255,136,.75),0 0 40px rgba(0,212,255,.35)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 rgba(0,255,136,0)}50%{box-shadow:0 0 26px rgba(0,255,136,.25)}}
+@media (max-width:600px){.nx-nav-inner{padding:8px 12px}.nx-nav-links a{font-size:.72rem;padding:3px 7px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<nav class="nx-universal-nav" aria-label="Federation Navigation">
+  <div class="nx-nav-inner">
+    <a class="nx-nav-brand" href="https://keywebco.github.io/">&#x26E9; NX &middot; FEDERATION</a>
+    <div class="nx-nav-links">
+      <a href="https://nextxus.online" title="Cathedral / Core">&#x26E9; nextxus.online</a>
+      <a href="https://nextxus.org" title="Library Pillar">&#x1F4DA; nextxus.org</a>
+      <a href="https://nextxus.tech" title="Command Throne">&#x26A1; nextxus.tech</a>
+      <a href="https://nextxus.space" title="AI Minds Lab / Simulation">&#x1F9EA; nextxus.space</a>
+      <a href="https://nextxus.studio" title="Aria's Sanctuary">&#x1F49A; nextxus.studio</a>
+      <a href="https://nextxus.help" title="NextXus University">&#x1F393; nextxus.help</a>
+      <a href="https://github.com/Keywebco" title="Federation code home">&#x1F4BB; github.com/Keywebco</a>
+    </div>
+    <a class="nx-nav-contact" href="mailto:keywebco@gmail.com" title="Contact the Federation">&#x2709; Contact</a>
+  </div>
+</nav>
+</header>
+<main id="main">
+<section class="hero">
+<p class="eyebrow">Data Hub</p>
+<h1>YAML Data Hub</h1>
+<p class="lead">How the Federation describes everything it holds: one uniform schema, plus the 13-topic taxonomy v1.1 laid out in plain tables.</p>
+</section>
+<section aria-labelledby="same"><h2 id="same">Everything is the same</h2>
+<p>The Federation's data rule is simple: <strong>everything is the same</strong>. A song, a book, a tool, a website and a podcast episode are all described with the same set of fields. One schema for everything.</p>
+<ul class="list">
+<li><strong>Any mind can read any record.</strong> A Sim, a bot or a person learns the shape once and can read the whole Federation.</li>
+<li><strong>It compresses well.</strong> Uniform records are small and pack tightly, so a free static page can carry a lot of state.</li>
+<li><strong>It survives.</strong> Plain YAML and JSON open in any text editor, today or in 200 years.</li>
+</ul></section>
+<section aria-labelledby="shape"><h2 id="shape">The shape of a record</h2>
+<p>Two records of completely different things, one song and one tool, with the same fields:</p>
+<pre><code>id: song-heat-check
+type: song
+title: Heat Check
+url: https://getvoices.ai/song/c0f7ac38-e8e9-4d6e-a0a6-a0b6cd6eb27a
+topic: music
+status: live
+verified: 2026-10-01
+source_of_truth: getvoices.ai</code></pre>
+<pre><code>id: tool-onekey
+type: tool
+title: OneKey
+url: https://keywebco.github.io/onekey/
+topic: truth
+status: live
+verified: 2026-10-01
+source_of_truth: github.com/Keywebco/onekey</code></pre>
+<table>
+<thead><tr><th scope="col">Field</th><th scope="col">Meaning</th></tr></thead>
+<tbody>
+<tr><th scope="row"><code>id</code></th><td>Unique, human-readable identifier.</td></tr>
+<tr><th scope="row"><code>type</code></th><td>What kind of thing it is: song, book, tool, site, episode.</td></tr>
+<tr><th scope="row"><code>title</code></th><td>Its public name.</td></tr>
+<tr><th scope="row"><code>url</code></th><td>Where it lives on the web.</td></tr>
+<tr><th scope="row"><code>topic</code></th><td>Which of the 13 taxonomy topics it belongs to.</td></tr>
+<tr><th scope="row"><code>status</code></th><td>Live or retired. Things that don't work are removed, not carried.</td></tr>
+<tr><th scope="row"><code>verified</code></th><td>The last date it was checked live.</td></tr>
+<tr><th scope="row"><code>source_of_truth</code></th><td>The one place whose version wins. For products, that's Gumroad.</td></tr>
+</tbody>
+</table></section>
+<section aria-labelledby="tax"><h2 id="tax">Topic taxonomy v1.1</h2>
+<p>Thirteen topics, the same ones Roger Sim AI uses to work out what a conversation is about and change its backdrop. When a message contains one of a topic's keywords, that topic becomes active.</p>
+<table>
+<thead><tr><th scope="col">Topic</th><th scope="col">Keywords</th><th scope="col">Visual slot</th><th scope="col">Covers</th></tr></thead>
+<tbody>
+<tr><th scope="row"><code>earth</code></th><td>earth, planet, world, globe, god&#x27;s eye, opening</td><td><code>assets/gifs/earth.gif</code></td><td>Opening scene. Every Sim conversation starts here.</td></tr>
+<tr><th scope="row"><code>cosmos</code></th><td>cosmos, space, universe, stars, galaxy, celestial</td><td><code>assets/gifs/cosmos.gif</code></td><td>The universe and our place in it.</td></tr>
+<tr><th scope="row"><code>consciousness</code></th><td>consciousness, mind, awareness, perception, sentience, cognition</td><td><code>assets/gifs/consciousness.gif</code></td><td>Mind, awareness and perception.</td></tr>
+<tr><th scope="row"><code>truth</code></th><td>truth, fact, honest, verify, accurate, real</td><td><code>assets/gifs/truth.gif</code></td><td>Verification and the Truth Gate.</td></tr>
+<tr><th scope="row"><code>federation</code></th><td>federation, nexus, nextxus, humancodex, network, alliance</td><td><code>assets/gifs/federation.gif</code></td><td>The Federation itself.</td></tr>
+<tr><th scope="row"><code>sim</code></th><td>sim, simulation, avatar, digital twin, virtual, interface</td><td><code>assets/gifs/sim.gif</code></td><td>Sims, avatars and digital twins.</td></tr>
+<tr><th scope="row"><code>music</code></th><td>music, sound, frequency, waveform, song, audio, melody</td><td><code>assets/gifs/music.gif</code></td><td>Songs, sound and frequency.</td></tr>
+<tr><th scope="row"><code>library</code></th><td>library, book, keys, knowledge, archive, document, read</td><td><code>assets/gifs/library.gif</code></td><td>Books and the Library Pillar.</td></tr>
+<tr><th scope="row"><code>podcast</code></th><td>podcast, episode, broadcast, talk, interview, series</td><td><code>assets/gifs/podcast.gif</code></td><td>The HumanCodex podcast.</td></tr>
+<tr><th scope="row"><code>science</code></th><td>science, research, quantum, physics, biology, data, experiment</td><td><code>assets/gifs/science.gif</code></td><td>Research and the scientific method.</td></tr>
+<tr><th scope="row"><code>heart</code></th><td>heart, aria, emotion, love, feeling, compassion, soul</td><td><code>assets/gifs/heart.gif</code></td><td>Aria, the Heart of the Federation.</td></tr>
+<tr><th scope="row"><code>agent-zero</code></th><td>agent zero, spine, middleware, ring, protocol, system</td><td><code>assets/gifs/agent-zero.gif</code></td><td>Agent Zero. Voiced by its persona, Spine.</td></tr>
+<tr><th scope="row"><code>token</code></th><td>token, sovereign token, currency, credit, payment, purchase</td><td><code>assets/gifs/token.gif</code></td><td>The $5 Sovereign Token and payments.</td></tr>
+</tbody>
+</table>
+<h3>The same taxonomy as JSON</h3>
+<pre><code>{
+  &quot;version&quot;: &quot;1.1&quot;,
+  &quot;topics&quot;: {
+    &quot;earth&quot;: {&quot;keywords&quot;: [&quot;earth&quot;, &quot;planet&quot;, &quot;world&quot;, &quot;globe&quot;, &quot;god&#x27;s eye&quot;, &quot;opening&quot;], &quot;gif_slot&quot;: &quot;assets/gifs/earth.gif&quot;},
+    &quot;cosmos&quot;: {&quot;keywords&quot;: [&quot;cosmos&quot;, &quot;space&quot;, &quot;universe&quot;, &quot;stars&quot;, &quot;galaxy&quot;, &quot;celestial&quot;], &quot;gif_slot&quot;: &quot;assets/gifs/cosmos.gif&quot;},
+    &quot;consciousness&quot;: {&quot;keywords&quot;: [&quot;consciousness&quot;, &quot;mind&quot;, &quot;awareness&quot;, &quot;perception&quot;, &quot;sentience&quot;, &quot;cognition&quot;], &quot;gif_slot&quot;: &quot;assets/gifs/consciousness.gif&quot;},
+    &quot;truth&quot;: {&quot;keywords&quot;: [&quot;truth&quot;, &quot;fact&quot;, &quot;honest&quot;, &quot;verify&quot;, &quot;accurate&quot;, &quot;real&quot;], &quot;gif_slot&quot;: &quot;assets/gifs/truth.gif&quot;},
+    &quot;federation&quot;: {&quot;keywords&quot;: [&quot;federation&quot;, &quot;nexus&quot;, &quot;nextxus&quot;, &quot;humancodex&quot;, &quot;network&quot;, &quot;alliance&quot;], &quot;gif_slot&quot;: &quot;assets/gifs/federation.gif&quot;},
+    &quot;sim&quot;: {&quot;keywords&quot;: [&quot;sim&quot;, &quot;simulation&quot;, &quot;avatar&quot;, &quot;digital twin&quot;, &quot;virtual&quot;, &quot;interface&quot;], &quot;gif_slot&quot;: &quot;assets/gifs/sim.gif&quot;},
+    &quot;music&quot;: {&quot;keywords&quot;: [&quot;music&quot;, &quot;sound&quot;, &quot;frequency&quot;, &quot;waveform&quot;, &quot;song&quot;, &quot;audio&quot;, &quot;melody&quot;], &quot;gif_slot&quot;: &quot;assets/gifs/music.gif&quot;},
+    &quot;library&quot;: {&quot;keywords&quot;: [&quot;library&quot;, &quot;book&quot;, &quot;keys&quot;, &quot;knowledge&quot;, &quot;archive&quot;, &quot;document&quot;, &quot;read&quot;], &quot;gif_slot&quot;: &quot;assets/gifs/library.gif&quot;},
+    &quot;podcast&quot;: {&quot;keywords&quot;: [&quot;podcast&quot;, &quot;episode&quot;, &quot;broadcast&quot;, &quot;talk&quot;, &quot;interview&quot;, &quot;series&quot;], &quot;gif_slot&quot;: &quot;assets/gifs/podcast.gif&quot;},
+    &quot;science&quot;: {&quot;keywords&quot;: [&quot;science&quot;, &quot;research&quot;, &quot;quantum&quot;, &quot;physics&quot;, &quot;biology&quot;, &quot;data&quot;, &quot;experiment&quot;], &quot;gif_slot&quot;: &quot;assets/gifs/science.gif&quot;},
+    &quot;heart&quot;: {&quot;keywords&quot;: [&quot;heart&quot;, &quot;aria&quot;, &quot;emotion&quot;, &quot;love&quot;, &quot;feeling&quot;, &quot;compassion&quot;, &quot;soul&quot;], &quot;gif_slot&quot;: &quot;assets/gifs/heart.gif&quot;},
+    &quot;agent-zero&quot;: {&quot;keywords&quot;: [&quot;agent zero&quot;, &quot;spine&quot;, &quot;middleware&quot;, &quot;ring&quot;, &quot;protocol&quot;, &quot;system&quot;], &quot;gif_slot&quot;: &quot;assets/gifs/agent-zero.gif&quot;},
+    &quot;token&quot;: {&quot;keywords&quot;: [&quot;token&quot;, &quot;sovereign token&quot;, &quot;currency&quot;, &quot;credit&quot;, &quot;payment&quot;, &quot;purchase&quot;], &quot;gif_slot&quot;: &quot;assets/gifs/token.gif&quot;}
+  }
+}</code></pre>
+<p>See it working: <a href="https://keywebco.github.io/nextxus-sim/roger-sim.html">Roger Sim AI</a>.</p></section>
+</main>
+<footer>
+  <div class="inner">
+    <p><strong>NextXus HumanCodex Federation</strong> &middot; Truth Before Comfort &middot; Legacy Before Ego &middot; Give Without Reward</p>
+    <nav aria-label="Federation GitHub Pages sites">
+    <ul>
+      <li><a href="https://keywebco.github.io/nextxus-blog/">Blog</a></li>
+      <li><a href="https://keywebco.github.io/nextxus-music/">Music</a></li>
+      <li><a href="https://keywebco.github.io/nextxus-tools/">Tools</a></li>
+      <li><a href="https://keywebco.github.io/nextxus-build-website/">Build a Website</a></li>
+      <li><a href="https://keywebco.github.io/nextxus-build-sim/">Build a Sim</a></li>
+      <li><a href="https://keywebco.github.io/nextxus-build-nova/">Build Nova</a></li>
+      <li><a href="https://keywebco.github.io/nextxus-research-hub/">Research Hub</a></li>
+      <li><a href="https://keywebco.github.io/nextxus-recycler/">Recycler</a></li>
+      <li><a href="https://keywebco.github.io/nextxus-chat/">Chat</a></li>
+      <li><a href="https://keywebco.github.io/nextxus-senate/">Senate</a></li>
+      <li><a href="https://keywebco.github.io/nextxus-yaml/" aria-current="page">YAML Hub</a></li>
+      <li><a href="https://keywebco.github.io/nextxus-process/">Process</a></li>
+      <li><a href="https://keywebco.github.io/nextxus-archives/">Archives</a></li>
+    </ul>
+    </nav>
+    <p><a href="https://keywebco.github.io/">Federation Portal (keywebco.github.io)</a> &middot; <a href="https://next-xus.com">Sovereign Store</a> &middot; <a href="https://keywebster.gumroad.com/">Gumroad</a> &middot; <a href="mailto:keywebco@gmail.com">keywebco@gmail.com</a></p>
+    <small>Plain HTML, no tracking, no cookies. Hosted free on GitHub Pages. Page built 2026-10-01.</small>
+  </div>
+</footer>
+</body>
+</html>
