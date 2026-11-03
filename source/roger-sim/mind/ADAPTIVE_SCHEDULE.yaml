@@ -1,0 +1,49 @@
+# Adaptive Schedule Evolution
+# Lightweight memory of how often tasks run versus how much they actually improve the system.
+# Purpose: notice over-attention and shift resources toward deficient areas.
+# Version: 1.0 — 2026-11-03
+
+metadata:
+  name: "Adaptive Schedule"
+  parent: "CHECKPOINTS_AND_SCHEDULE.yaml"
+  purpose: "Evolve the schedule itself. If a repair or review fires far more often than its results justify, record the imbalance and make reallocation visible."
+
+principle:
+  - "Frequency alone is not value."
+  - "Track both trigger count and observed improvement."
+  - "When a task is over-triggered relative to benefit, flag it for reduction and note candidate areas that are under-served."
+  - "Architect decides any actual change. This layer only surfaces the pattern."
+
+tracking_fields:
+  task_id: string
+  period: string                  # e.g. "2026-11"
+  trigger_count: integer
+  improvement_signals: integer    # number of times the task produced a clear, kept improvement
+  ratio: float                    # improvement_signals / trigger_count (or null if zero)
+  status: "balanced | over_attended | under_attended | needs_review"
+  notes: string
+  suggested_shift: string         # optional: where attention might move
+
+example_observation:
+  task_id: "cp-health"
+  period: "2026-11"
+  trigger_count: 1
+  improvement_signals: 1
+  ratio: 1.0
+  status: "balanced"
+  notes: "First health checkpoint created the schedule layer itself."
+  suggested_shift: null
+
+rules:
+  - "After several periods, if ratio stays low while trigger_count stays high, mark over_attended."
+  - "If a known deficient area (missing procedure, thin memory, un-reviewed branch) has no recent attention, mark under_attended."
+  - "Proposals to change cadence go into the contemplation simulation or memory log; they are not auto-applied."
+  - "Evolutionary units may later write observations into this file; Architect and multi-viewpoint check still approve changes to the live schedule."
+
+integration:
+  - "Read by weekly or monthly review checkpoints."
+  - "Writes are append-style observations, not silent edits to the main schedule."
+  - "Pairs with CONTEMPLATION_SIMULATION.yaml when a reallocation idea needs multi-state examination."
+
+# Observations are appended below as the schedule runs.
+observations: []
