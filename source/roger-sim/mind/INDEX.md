@@ -26,6 +26,7 @@ Load this first, then follow the pointers. All files are plain YAML or Markdown,
 - `PROCEDURE_EVOLUTION_HOOK.yaml` — Invitation for units to propose extensions
 - `CONTEMPLATION_SIMULATION.yaml` — Multi-state idea exploration
 - `SELF_SUFFICIENCY_NOTES.md` + `REQUEST_TEMPLATES.md` — Smaller external requests
+- `CONSISTENCY_NOTES.md` — Consistency and evolution notes for the mind layer
 
 ## Fallback and external access
 - `BASELINE_AND_OUTBOUND.yaml` — Local-file mode when APIs are down; outbound Ring design
