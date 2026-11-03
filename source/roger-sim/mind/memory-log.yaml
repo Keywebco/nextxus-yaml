@@ -1,6 +1,6 @@
 # Roger SIM — Live Memory Log
 # Append-only. First entry from the session that built this mind layer.
-# Version: 1.0 — 2026-11-03
+# Version: 1.1 — 2026-11-03
 
 metadata:
   name: "Roger SIM Memory Log"
@@ -29,5 +29,20 @@ records:
     sensitivity: "private"
     shared_to_federation: false
     notes: "Foundation session. Agent Zero verification applied: no invented private memories; aligned with HumanCodex priorities and Keyserling Procedure. Ready for future location-tagged entries."
+
+  - id: "mem-2026-11-03-002"
+    timestamp: "2026-11-03T03:02:00Z"
+    location_or_session: "Grok conversation / Keywebco session"
+    type: "checkpoint"
+    content: >
+      Sample checkpoint: Checkpoints and schedule skeleton added. Adaptive schedule evolution
+      layer also added so the Federation can notice when a repair or review is triggered more
+      often than its results justify and shift attention toward deficient areas.
+      Contemplation simulation, evolutionary-units bridge, and request templates remain active.
+    evidence_class: "implementation_claim"
+    provenance: "this conversation"
+    sensitivity: "private"
+    shared_to_federation: false
+    notes: "First explicit checkpoint entry. Adaptive algorithm file created alongside."
 
 # New records are appended below.
