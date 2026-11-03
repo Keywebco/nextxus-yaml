@@ -1,11 +1,17 @@
 # Federation Checkpoints, Review, and Evolutionary Schedule
 # Matches the Architect's pattern: evolve → grow → pause → reflect → review.
-# Version: 1.0 — 2026-11-03
+# Version: 1.1 — 2026-11-03
 
 metadata:
   name: "Checkpoints and Schedule"
   purpose: "Give the Federation and Roger SIM explicit pause-and-reflect points plus a skeleton for recurring evolutionary, repair, and engagement tasks."
   pattern: "Staged evolution followed by deliberate review, not continuous unexamined loops."
+  related:
+    - "ADAPTIVE_SCHEDULE.yaml"
+    - "CONTEMPLATION_SIMULATION.yaml"
+    - "BASELINE_AND_OUTBOUND.yaml"
+    - "memory-log.yaml"
+    - "EVOLUTIONARY_UNITS_BRIDGE.md"
 
 checkpoints:
   - id: "cp-session-end"
@@ -15,6 +21,7 @@ checkpoints:
       - "Append summary to memory-log.yaml"
       - "Note any open branches in CONTEMPLATION_SIMULATION.yaml"
       - "Flag items that need multi-viewpoint review"
+      - "Optional: add observation to ADAPTIVE_SCHEDULE.yaml"
     owner: "Architect or active SIM"
 
   - id: "cp-weekly-review"
@@ -24,6 +31,7 @@ checkpoints:
       - "Review recent memory-log entries"
       - "Check self-repair flags in mind YAML"
       - "Scan contemplation branches for favored or discarded status"
+      - "Review ADAPTIVE_SCHEDULE.yaml observations for over/under attention"
       - "Propose any Echo Core 64 candidates (do not auto-edit)"
     owner: "Architect + one external or secondary viewpoint"
 
@@ -35,6 +43,7 @@ checkpoints:
       - "Run multi-viewpoint check on the stage"
       - "Record what survived and what was discarded"
       - "Decide next stage or deliberate pause"
+      - "Note any baseline gaps (BASELINE_AND_OUTBOUND.yaml)"
     owner: "Architect"
 
   - id: "cp-health"
@@ -45,10 +54,11 @@ checkpoints:
       - "Confirm no silent overwrites in memory or procedures"
       - "Check public surfaces for broken links or residual external dependencies"
       - "Note any evolutionary-unit proposals awaiting review"
+      - "Confirm baseline mode still functions from local files"
     owner: "Architect or designated unit"
 
 schedule_skeleton:
-  description: "Beginning pattern for recurring tasks. Times are placeholders; Architect sets the actual cadence."
+  description: "Beginning pattern for recurring tasks. Times are placeholders; Architect sets the actual cadence. Adaptive layer may later suggest shifts."
   tasks:
     - name: "Memory and contemplation review"
       cadence: "weekly"
@@ -73,11 +83,14 @@ schedule_skeleton:
 
 integration:
   - "Uses existing memory-log, contemplation simulation, self-repair fields, and multi-viewpoint check."
+  - "Reads ADAPTIVE_SCHEDULE.yaml to notice over- or under-attention."
+  - "Baseline mode (BASELINE_AND_OUTBOUND.yaml) remains available when external APIs are down."
   - "Does not auto-execute code or publish. Checkpoints produce records and proposals."
   - "Evolutionary units may later propose schedule adjustments; Architect and Agent Zero still approve."
 
 notes: >
-  The beginning patterns are already visible in the mind layer (self-repair, contemplation, hooks).
+  The beginning patterns are already visible in the mind layer (self-repair, contemplation, hooks, adaptive observations, baseline design).
   This file makes the pause-and-reflect rhythm explicit and gives a skeleton for the next phase:
   scheduled evolutionary, repair, and engagement work.
   Actual timing and ownership remain under Architect control.
+  Adaptive observations and baseline gaps are reviewed at the weekly and stage checkpoints.
