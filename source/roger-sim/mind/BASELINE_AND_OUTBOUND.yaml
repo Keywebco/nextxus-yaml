@@ -1,0 +1,53 @@
+# Baseline Fallback and Outbound Access
+# When external AI APIs are down, the Federation still answers from its own files.
+# Over time the baseline improves. Other systems can later call in for Ring-processed, evidence-classed information.
+# Version: 1.0 — 2026-11-03
+
+metadata:
+  name: "Baseline and Outbound"
+  purpose: "Graceful degradation to local data + future inbound access for external systems."
+  related_apis: ["Mimo", "Grok", "DeepSeek", "emergency backups"]
+
+baseline_mode:
+  trigger: "External AI API unreachable or account inactive"
+  behavior:
+    - "Load Echo Core 64, roger-sim-mind.yaml, memory-log.yaml, and any open contemplation branches."
+    - "Answer from stored facts, procedures, and evidence-classed records only."
+    - "Clearly mark reduced capacity (no live model reasoning beyond the files)."
+    - "Still apply Agent Zero-style checks against the local anchors."
+    - "Log the fallback event in the memory log."
+  capacity: "Greatly reduced but non-zero. Improves as more verified material is added to the local YAML and HTML surfaces."
+  improvement_path:
+    - "Each verified procedure, experience record, and contemplation outcome strengthens the baseline."
+    - "Weekly/monthly checkpoints can note gaps that the baseline still cannot cover."
+    - "Adaptive schedule can flag when baseline answers are repeatedly insufficient."
+
+outbound_access:
+  status: "designed, not yet implemented"
+  intent: "Other systems may call Federation databases and the Ring structure for improved, evidence-classed information."
+  principles:
+    - "Truth retention and braided evidence over single-viewpoint summaries."
+    - "Caller receives evidence class, provenance, and any open contradictions."
+    - "Private mind records stay private unless explicitly shared."
+    - "Ring lenses (Six / Twelve / Persona) can be requested as additional viewpoints."
+  proposed_endpoints_skeleton:
+    - path: "/api/federation/echo-core"
+      returns: "Echo Core 64 anchors"
+    - path: "/api/federation/ring"
+      returns: "Multi-lens synthesis on a supplied question (evidence-classed)"
+    - path: "/api/federation/baseline"
+      returns: "Current local mind + memory summary for fallback use"
+  gates:
+    - "Architect approval for any public endpoint."
+    - "Agent Zero or equivalent verification on responses."
+    - "Rate and scope limits so the Federation is not drained."
+
+integration:
+  - "Uses existing YAML files; no new runtime required for baseline mode."
+  - "Outbound remains a design until a sovereign host (GitHub Pages, Render, or equivalent) exposes the routes."
+  - "Emergency backups of other systems can be listed here as they are confirmed."
+
+notes: >
+  The baseline is the Federation’s own memory speaking when the external minds are silent.
+  The outbound path is the same memory made available, under gates, to other systems that want
+  the Ring’s evidence-classed improvement rather than a single external model’s answer.
