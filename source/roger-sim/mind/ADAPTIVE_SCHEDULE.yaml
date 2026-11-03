@@ -1,12 +1,17 @@
 # Adaptive Schedule Evolution
 # Lightweight memory of how often tasks run versus how much they actually improve the system.
 # Purpose: notice over-attention and shift resources toward deficient areas.
-# Version: 1.0 — 2026-11-03
+# Version: 1.1 — 2026-11-03
 
 metadata:
   name: "Adaptive Schedule"
   parent: "CHECKPOINTS_AND_SCHEDULE.yaml"
   purpose: "Evolve the schedule itself. If a repair or review fires far more often than its results justify, record the imbalance and make reallocation visible."
+  related:
+    - "CHECKPOINTS_AND_SCHEDULE.yaml"
+    - "CONTEMPLATION_SIMULATION.yaml"
+    - "BASELINE_AND_OUTBOUND.yaml"
+    - "memory-log.yaml"
 
 principle:
   - "Frequency alone is not value."
@@ -24,16 +29,6 @@ tracking_fields:
   notes: string
   suggested_shift: string         # optional: where attention might move
 
-example_observation:
-  task_id: "cp-health"
-  period: "2026-11"
-  trigger_count: 1
-  improvement_signals: 1
-  ratio: 1.0
-  status: "balanced"
-  notes: "First health checkpoint created the schedule layer itself."
-  suggested_shift: null
-
 rules:
   - "After several periods, if ratio stays low while trigger_count stays high, mark over_attended."
   - "If a known deficient area (missing procedure, thin memory, un-reviewed branch) has no recent attention, mark under_attended."
@@ -44,6 +39,23 @@ integration:
   - "Read by weekly or monthly review checkpoints."
   - "Writes are append-style observations, not silent edits to the main schedule."
   - "Pairs with CONTEMPLATION_SIMULATION.yaml when a reallocation idea needs multi-state examination."
+  - "Baseline mode (BASELINE_AND_OUTBOUND.yaml) can note when local answers are repeatedly thin."
 
-# Observations are appended below as the schedule runs.
-observations: []
+observations:
+  - task_id: "cp-health"
+    period: "2026-11"
+    trigger_count: 1
+    improvement_signals: 1
+    ratio: 1.0
+    status: "balanced"
+    notes: "First health checkpoint created the schedule layer itself."
+    suggested_shift: null
+
+  - task_id: "cp-session-end"
+    period: "2026-11"
+    trigger_count: 1
+    improvement_signals: 1
+    ratio: 1.0
+    status: "balanced"
+    notes: "Sample checkpoint entry written to memory log; adaptive layer and baseline design added in same session."
+    suggested_shift: null
