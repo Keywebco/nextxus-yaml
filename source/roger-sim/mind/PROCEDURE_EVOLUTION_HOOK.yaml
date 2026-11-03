@@ -1,0 +1,29 @@
+# Procedure Evolution Hook
+# Lightweight structure evolutionary software units can read and extend.
+# Does not grant execution rights; only records the invitation.
+
+evolutionary_units:
+  status: "emerging"
+  examples:
+    - name: "Nova"
+      pattern: "Agent Zero-inspired tool and procedure evolution"
+      current_role: "Discovery / mid-tier explorer"
+  invitation: >
+    Future units may propose new procedures or refinements to existing ones.
+    Proposals must include evidence class, test method, and expected outcome.
+    Agent Zero (or equivalent verification) reviews before any procedure is stored
+    in the SIM mind or shared.
+
+procedure_extension_fields:
+  proposed_by: string          # unit name or session id
+  parent_procedure: string     # name of existing procedure being extended, or null
+  change_summary: string
+  evidence_class: string
+  test_method: string
+  multi_viewpoint_required: true
+  status: "proposed | reviewed | accepted | rejected"
+
+notes: >
+  This hook exists so that when evolutionary units begin to improve the coding
+  and procedure systems, they have a clear, verifiable place to put their proposals.
+  The Architect and Agent Zero remain the gates.
