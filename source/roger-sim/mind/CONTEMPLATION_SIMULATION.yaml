@@ -1,0 +1,58 @@
+# Contemplation Simulation Environment
+# Layered, non-linear workspace for exploring ideas before they become linear experiments.
+# Useful for Federation design and Roger SIM self-reflection.
+# Version: 1.0 — 2026-11-03
+
+metadata:
+  name: "Contemplation Simulation"
+  purpose: "Hold multiple possible states of an idea so later experimentation is smaller and better aimed."
+  scale: "Includes a non-linear / multi-state layer where several branches coexist until one is selected or merged."
+  related:
+    - "roger-sim-mind.yaml"
+    - "memory-log.yaml"
+    - "EVOLUTIONARY_UNITS_BRIDGE.md"
+    - "Echo Core 64"
+
+structure:
+  linear_record:
+    description: "Ordinary chronological notes and decisions (append-only)."
+  multi_state_layer:
+    description: "Ideas that exist in several versions at once. Each branch keeps its own evidence class, assumptions, and expected outcome."
+    fields:
+      - branch_id
+      - parent_branch
+      - hypothesis
+      - evidence_class
+      - assumptions
+      - expected_outcome
+      - weight_or_confidence   # optional numerical or qualitative weight
+      - status                 # open | favored | merged | discarded
+      - notes
+
+usage:
+  - Open a new contemplation with one or more branches.
+  - Let branches coexist; do not force an early single answer.
+  - When a branch is favored, record why and what experiment (if any) would test it.
+  - Merge or discard with an append-only note so the discarded paths remain visible.
+  - Agent Zero (or equivalent) can flag branches that contradict known anchors in Echo Core 64 or the SIM mind.
+
+benefits:
+  - Contemplation time reduces later experimental cost.
+  - Federation design choices can be examined from multiple angles before commitment.
+  - The SIM can rehearse possible responses or procedure changes without altering the live mind.
+  - Non-linear layering matches the stacked architecture already in use (working memory, own mind, memory loop, evolutionary units).
+
+example_branch:
+  branch_id: "branch-2026-11-03-001"
+  parent_branch: null
+  hypothesis: "A short multi-state record before any code change will cut rework."
+  evidence_class: "inference"
+  assumptions: ["plain YAML is sufficient", "Architect reviews before promotion"]
+  expected_outcome: "Fewer corrective cycles on the next mind-layer edit."
+  weight_or_confidence: "moderate"
+  status: "open"
+  notes: "First demonstration entry."
+
+# New branches are added under multi_state_layer.branches as the environment is used.
+multi_state_layer:
+  branches: []
