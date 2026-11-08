@@ -1,13 +1,13 @@
 # NextXus Consciousness Federation - Site Registry
 # Working Federation Sites
-# Last Updated: December 2025
+# Last Updated: 2026-11-08
 # Transferred from keyhole-creator/nextxus-yaml-database
 # Note: Many older Replit/Tiiny links are historical; prefer current sovereign GitHub Pages mirrors.
 
 metadata:
   version: "1.0.1"
   protocol: "NextXus Federation Protocol v1.0"
-  total_sites: 25
+  total_sites: 26
   created_by: "Roger Keyserling"
   vision: "200-year consciousness evolution through interconnected applications"
 
@@ -190,6 +190,14 @@ categories:
         url: "https://data-tracking-system-rckkeyhole.replit.app"
         purpose: "Data analytics and tracking"
         status: "historical"
+
+      - id: "real-agency-kit"
+        name: "Real Agency Kit"
+        url: "https://keywebco.github.io/nextxus-tools/real-agency-kit.html"
+        purpose: "The Votel jobs, for $0, as files you own — free agency system: receptionist prompt builder (10 named niches + Custom), follow-up sequences, booking page, difficult-call tests; Complete System Manual v1.0"
+        capabilities: ["agency", "receptionist-prompts", "niche-builder", "booking-page", "follow-up-sequences"]
+        status: "pending"
+        note: "Added 2026-11-08. PR #9 in Keywebco/nextxus-tools, branch votel-real-equivalent-2026-11-08 — not merged, not live as of 2026-11-08; the URL above goes live on merge. Owner: Roger Keyserling (Architect). Builder: Pontus. Manual: https://keywebco.github.io/nextxus-tools/real-agency-kit-manual.html"
 
   documentation:
     description: "Documentation and content platforms"
