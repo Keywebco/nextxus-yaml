@@ -30,3 +30,5 @@ https://keywebco.github.io/nextxus-yaml/
 ---
 
 Part of the [NextXus Federation](https://keywebco.github.io).
+
+free_tools_library: {repo: Keywebco/nextxus-free-tools, count: 51, updated: 2026-11-12}
